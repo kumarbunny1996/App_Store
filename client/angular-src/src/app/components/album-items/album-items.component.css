@@ -1,0 +1,9 @@
+li{
+    background: rgb(168, 167, 167);
+}
+li .btn-group{
+    margin-right: 0px;
+    position: absolute;
+    right: 30px;
+    top: 5px;
+}

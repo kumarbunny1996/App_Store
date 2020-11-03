@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()" class="mt-5 album-form">
+    <div class="form-group">
+        <label for="usr">Title:</label>
+        <input type="text" class="form-control" id="usr" name="title" [(ngModel)]="title" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Album</button>
+</form>
+<h1 class="album-form">Albums</h1>
+<ul class="list-group mt-5">
+    <app-album-items *ngFor="let album of albums | async" [album]="album" class="album-form"></app-album-items>
+</ul>   
+    
+

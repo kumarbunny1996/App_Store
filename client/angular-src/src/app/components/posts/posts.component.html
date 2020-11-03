@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()" class="mt-5 post-form">
+    <div class="form-group">
+        <label for="usr">Title:</label>
+        <input type="text" class="form-control" id="usr" name="title" [(ngModel)]="title" required>
+    </div>
+    <div class="form-group">
+        <label for="usr">Post:</label>
+        <input type="text" class="form-control" id="usr" name="body" [(ngModel)]="body" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Post</button>
+</form>
+<h1 class="post-head mt-5">Posts</h1>
+<app-post-items *ngFor="let post of posts$ | async" [post]="post" class="mt-5" (deletePost)="deletePost($event)"></app-post-items>

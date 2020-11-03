@@ -1,0 +1,12 @@
+{
+  "functions": {
+    "targets": [
+      "app_store_function"
+    ],
+    "ignore": [],
+    "source": "functions"
+  },
+  "client": {
+    "source": "client"
+  }
+}
