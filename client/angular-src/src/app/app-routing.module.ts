@@ -1,22 +1,24 @@
-import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { ReadComponent } from './components/read/read.component';
-import { PostsComponent } from './components/posts/posts.component';
-import { AlbumsComponent } from './components/albums/albums.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'albums', component: AlbumsComponent},
-  {path: 'posts/:ROWID', component: EditPostComponent},
-  {path: 'posts', component: PostsComponent},
-  {path: 'read', component: ReadComponent},
-
+  { path: '', component: HomeComponent },
+  {
+    path: 'post',
+    loadChildren: () => import('./post/post.module').then((m) => m.PostModule),
+  },
+  {
+    path: 'albums',
+    loadChildren: () =>
+      import('./albums/albums.module').then((m) => m.AlbumsModule),
+  },
+  { path: 'read', component: ReadComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

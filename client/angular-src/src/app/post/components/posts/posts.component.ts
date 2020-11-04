@@ -1,22 +1,22 @@
-import { addPost, deletePost, loadPosts} from './../../store/postStore/post.actions';
+import { addPost, deletePost, loadPosts } from './../../postStore/post.actions';
 import { select, Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
-import { PostState } from 'src/app/store/postStore/post.reducer';
+import { PostState } from './../../postStore/post.reducer';
 import { Observable } from 'rxjs';
-import { selectPosts } from 'src/app/store/postStore/post.selectors';
-import { PostRes } from 'src/app/store/postStore/post.model';
+import { selectPosts } from './../../postStore/post.selectors';
+import { PostRes } from './../../postStore/post.model';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
   posts$: Observable<PostRes[]>;
   title: string;
   body: string;
 
-  constructor(private store: Store<PostState>) { }
+  constructor(private store: Store<PostState>) {}
 
   ngOnInit(): void {
     this.store.dispatch(loadPosts());
@@ -32,6 +32,6 @@ export class PostsComponent implements OnInit {
   }
   deletePost(post: PostRes): any {
     const id = post.ROWID;
-    this.store.dispatch(deletePost({ROWID: id}));
+    this.store.dispatch(deletePost({ ROWID: id }));
   }
 }

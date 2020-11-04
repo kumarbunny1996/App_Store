@@ -1,8 +1,0 @@
-<div class="container-fluid post">
-    <h3>{{ post.title}}</h3>
-    <p>{{ post.body }}</p>
-    <div class="btn-group mb-3">
-        <button type="button" [routerLink]="['/posts', post.ROWID]" class="btn btn-primary ml-3">Edit</button>
-        <button type="button" (click)="onDeletePost(post)" class="btn btn-danger ml-3">Delete</button>
-    </div>
-</div>

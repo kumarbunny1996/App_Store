@@ -1,20 +1,20 @@
-import { selectAlbums } from '../../store/albumStore/album.selector';
+import { selectAlbums } from '../../albumStore/album.selector';
 import { select, Store } from '@ngrx/store';
-import { Albums, AlbumsRes } from './../../store/albumStore/album.model';
+import { Albums, AlbumsRes } from '../../albumStore/album.model';
 import { Component, OnInit } from '@angular/core';
-import * as FromAlbumActions from './../../store/albumStore/album.actions';
+import * as FromAlbumActions from '../../albumStore/album.actions';
 import { Observable } from 'rxjs';
-import { AlbumState } from 'src/app/store/albumStore/album.reducer';
+import { AlbumState } from './../../albumStore/album.reducer';
 
 @Component({
   selector: 'app-albums',
   templateUrl: './albums.component.html',
-  styleUrls: ['./albums.component.css']
+  styleUrls: ['./albums.component.css'],
 })
 export class AlbumsComponent implements OnInit {
   albums: Observable<AlbumsRes[]>;
   title: string;
-  constructor(private store: Store<AlbumState>) { }
+  constructor(private store: Store<AlbumState>) {}
 
   ngOnInit(): void {
     this.store.dispatch(FromAlbumActions.loadAlbums());
@@ -23,9 +23,8 @@ export class AlbumsComponent implements OnInit {
 
   onSubmit(): any {
     const data = {
-      title: this.title
+      title: this.title,
     };
-    this.store.dispatch(FromAlbumActions.addAlbum({album: data}));
+    this.store.dispatch(FromAlbumActions.addAlbum({ album: data }));
   }
-
 }

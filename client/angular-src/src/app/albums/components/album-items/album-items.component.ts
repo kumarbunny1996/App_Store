@@ -1,16 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Albums } from './../../store/albumStore/album.model';
+import { Albums } from '../../albumStore/album.model';
 
 @Component({
   selector: 'app-album-items',
   templateUrl: './album-items.component.html',
-  styleUrls: ['./album-items.component.css']
+  styleUrls: ['./album-items.component.css'],
 })
 export class AlbumItemsComponent implements OnInit {
   @Input() album: Albums;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

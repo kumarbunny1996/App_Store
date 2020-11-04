@@ -1,18 +1,18 @@
 import { Update } from '@ngrx/entity';
-import { updatePost } from './../../store/postStore/post.actions';
-import { PostState } from 'src/app/store/postStore/post.reducer';
+import { updatePost } from './../../postStore/post.actions';
+import { PostState } from './../../postStore/post.reducer';
 import { select, Store } from '@ngrx/store';
-import { Post, PostRes } from './../../store/postStore/post.model';
+import { Post, PostRes } from './../../postStore/post.model';
 import { Component, OnInit } from '@angular/core';
-import { loadPost } from 'src/app/store/postStore/post.actions';
+import { loadPost } from './../../postStore/post.actions';
 import { ActivatedRoute, Router } from '@angular/router';
-import { selectedPost } from 'src/app/store/postStore/post.selectors';
+import { selectedPost } from './../../postStore/post.selectors';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-post',
   templateUrl: './edit-post.component.html',
-  styleUrls: ['./edit-post.component.css']
+  styleUrls: ['./edit-post.component.css'],
 })
 export class EditPostComponent implements OnInit {
   post: PostRes;
@@ -20,13 +20,13 @@ export class EditPostComponent implements OnInit {
   constructor(
     private store: Store<PostState>,
     private router: Router,
-    private route: ActivatedRoute,
-  ) { }
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     const route = this.route.snapshot.paramMap;
-    this.store.dispatch(loadPost({ROWID: route.get('ROWID')}));
-    this.store.pipe(select(selectedPost)).subscribe(post => {
+    this.store.dispatch(loadPost({ ROWID: route.get('ROWID') }));
+    this.store.pipe(select(selectedPost)).subscribe((post) => {
       this.post = Object.assign(new PostRes(), post);
     });
   }
@@ -35,6 +35,6 @@ export class EditPostComponent implements OnInit {
       id: this.post.ROWID,
       changes: this.post,
     };
-    this.store.dispatch(updatePost({post: update}));
+    this.store.dispatch(updatePost({ post: update }));
   }
 }
