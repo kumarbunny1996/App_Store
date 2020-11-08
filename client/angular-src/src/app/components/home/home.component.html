@@ -1,7 +1,45 @@
 <form (ngSubmit)="onSubmit()" class="mt-5">
-    <div class="form-group">
-        <label for="usr">Name:</label>
-        <input type="text" class="form-control" id="usr" name="username" [(ngModel)]="username" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="form-group">
+    <label for="usr">Name:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="usr"
+      name="username"
+      [(ngModel)]="username"
+      required
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<div class="row mt-5">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-sm-4">
+          <label for="sort-field">SortBy</label>
+          <select
+            class="form-control"
+            name="sortField"
+            id="sort-field"
+            [(ngModel)]="sortField"
+          >
+            <option *ngFor="let field of sortFields" [value]="field">
+              {{ field }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="mt-5 col-sm-3 jumbotron"
+    *ngFor="let item of items | sortBy: [sortField]"
+  >
+    <h3>id: {{ item.id }}</h3>
+    <h4>name: {{ item.name }}</h4>
+    <h5>year: {{ item.year }}</h5>
+    <h6>age: {{ item.age }}</h6>
+  </div>
+</div>

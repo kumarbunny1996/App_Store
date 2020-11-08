@@ -1,10 +1,10 @@
-import { updatePost } from './../postStore/post.actions';
 import { Post, PostRes } from './../postStore/post.model';
 import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { State } from './../../store/userStore/reducer';
+import { catchError, map } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,7 +19,7 @@ export class PostsService {
   constructor(private http: HttpClient, private store: Store<State>) {}
 
   getPosts(): Observable<any> {
-    return this.http.get<any>('/api/posts');
+    return this.http.get<any>('/api/postsList');
   }
   getPost(ROWID: string): Observable<any> {
     return this.http.get<any>(`/api/post/?id=${ROWID}`);

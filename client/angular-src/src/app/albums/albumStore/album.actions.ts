@@ -2,9 +2,7 @@ import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
 import { Albums, AlbumsRes } from './album.model';
 
-export const loadAlbums = createAction(
-  '[Album Effects] Load Albums'
-);
+export const loadAlbums = createAction('[Album Effects] Load Albums');
 
 export const loadAlbumsSuccess = createAction(
   '[Album Effects] Load Albums Success',
@@ -39,17 +37,9 @@ export const updateAlbum = createAction(
   props<{ album: Update<Albums> }>()
 );
 
-
-
 export const deleteAlbum = createAction(
   '[Post/API] Delete Album',
   props<{ id: string }>()
 );
 
-
-export const clearAlbums = createAction(
-  '[Post/API] Clear Albums'
-);
-
-
-
+export const clearAlbums = createAction('[Post/API] Clear Albums');

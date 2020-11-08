@@ -1,3 +1,4 @@
+import { PostsComponent } from './../components/posts/posts.component';
 import { PostsService } from './../services/posts.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
@@ -90,6 +91,7 @@ export class PostEffects {
   constructor(
     private actions$: Actions,
     private postService: PostsService,
-    private router: Router
+    private router: Router,
+    private postsComp: PostsComponent
   ) {}
 }

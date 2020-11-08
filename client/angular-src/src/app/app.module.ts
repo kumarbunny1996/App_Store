@@ -1,3 +1,5 @@
+import { ErrorInterceptors } from './http_interceptors/error.interceptors';
+import { CustomPreloadStrategy } from './utils/preload.utils';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,9 +15,23 @@ import { ReadComponent } from './components/read/read.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { PostsService } from './post/services/posts.service';
+import { SortByPipe } from './utils/pipes/sort-by.pipe';
+import { ErrorComponent } from './components/error/error.component';
+import { httpInterceptorProviders } from './http_interceptors/http.providers';
+import { ErrorService } from './services/error.service';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnerService } from './services/spinner.service';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomeComponent, ReadComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    ReadComponent,
+    SortByPipe,
+    ErrorComponent,
+    SpinnerComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,7 +46,13 @@ import { PostsService } from './post/services/posts.service';
     }),
     EffectsModule.forRoot([]),
   ],
-  providers: [PostsService],
+  providers: [
+    PostsService,
+    CustomPreloadStrategy,
+    httpInterceptorProviders,
+    ErrorService,
+    SpinnerService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

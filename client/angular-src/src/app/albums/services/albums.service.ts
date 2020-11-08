@@ -16,7 +16,7 @@ export class AlbumsService {
   constructor(private http: HttpClient) {}
 
   getAlbums(): Observable<any> {
-    return this.http.get<any>('/api/albums');
+    return this.http.get<any>('/api/albumsList');
   }
   addAlbum(data: Albums): Observable<any> {
     return this.http.post<any>('/api/album', data, httpOptions);

@@ -4,30 +4,28 @@ import { Update } from '@ngrx/entity';
 import { Post, PostRes } from './post.model';
 
 // list of posts
-export const loadPosts = createAction(
-  '[Post List Component] Load Posts',
-);
+export const loadPosts = createAction('[Post List Component] Load Posts');
 export const loadPostsSuccess = createAction(
   '[Post List Effect] Load Posts Success',
   props<{ posts: PostRes[] }>()
 );
 export const loadPostsFailure = createAction(
   '[Post List Effect] Load Posts Failure',
-  props<{error: any }>()
+  props<{ error: any }>()
 );
 
 // single post loads
 export const loadPost = createAction(
-  '[Post Component] Load Posts',
+  '[Post Component] Load Post',
   props<{ ROWID: string }>()
 );
 export const loadPostSuccess = createAction(
-  '[Post Effect] Load Posts Success',
+  '[Post Effect] Load Post Success',
   props<{ selectedPost: PostRes }>()
 );
 export const loadPostFailure = createAction(
-  '[Post Effect] Load Posts Failure',
-  props<{error: any }>()
+  '[Post Effect] Load Post Failure',
+  props<{ error: any }>()
 );
 
 // add post
@@ -60,6 +58,4 @@ export const deletePost = createAction(
 );
 
 // clear the posts
-export const clearPosts = createAction(
-  '[Post Components] Clear Posts'
-);
+export const clearPosts = createAction('[Post Components] Clear Posts');

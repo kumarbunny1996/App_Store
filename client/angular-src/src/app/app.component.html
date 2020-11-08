@@ -1,2 +1,4 @@
+<app-spinner></app-spinner>
 <app-navbar></app-navbar>
+<app-error *ngIf="errorMsg" [childMessage]="errorMessage"></app-error>
 <router-outlet></router-outlet>

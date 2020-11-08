@@ -28,6 +28,7 @@ export class EditPostComponent implements OnInit {
     this.store.dispatch(loadPost({ ROWID: route.get('ROWID') }));
     this.store.pipe(select(selectedPost)).subscribe((post) => {
       this.post = Object.assign(new PostRes(), post);
+      console.log(this.post);
     });
   }
   onSubmit(): any {
